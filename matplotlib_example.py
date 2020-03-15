@@ -70,3 +70,54 @@ plt.imshow(img)
 plt.title("图片")
 plt.show()
 '''
+'''
+# 灰度图
+def f(x_, y_): 
+    return (1 - x_ / 2 + x_ ** 5 + y_ ** 3) * np.exp(-x_ ** 2 - y_ ** 2)
+
+n = 5
+x = np.linspace(-2, 3, 3 * n)
+y = np.linspace(-2, 3, 2 * n)
+X, Y = np.meshgrid(x, y)
+plt.imshow(f(X, Y))
+plt.show()
+'''
+
+'''
+#3D图
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X ** 2  + Y ** 2)
+Z = np.cos(R)
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='hot')
+plt.show()
+'''
+
+'''
+# 量场图
+n = 10
+X, Y = np.mgrid[0:n, 0:n]
+plt.quiver(X, Y,color = 'R')
+plt.show()
+'''
+
+'''
+# 等高线图
+def f(x_, y_):
+    return (1 - x_ / 2 + x_ ** 5 + y_ ** 3) * np.exp(-x_ ** 2 - y_ ** 2)
+
+
+n = 256
+x = np.linspace(-1, 3, n)
+y = np.linspace(-1, 3, n)
+X, Y = np.meshgrid(x, y)
+
+plt.contourf(X, Y, f(X, Y), 4, alpha=.75, cmap='jet')
+plt.contour(X, Y, f(X, Y), 4, colors='black', linewidth=.5)
+plt.show()
+'''
